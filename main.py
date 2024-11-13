@@ -10,9 +10,10 @@ def main():
     pygame.init()
     clock = pygame.time.Clock()
     dt = 0
+    score = 0
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     running = True
-    updateable, drawable, asteroids, shots = pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group(),
+    updateable, drawable, asteroids, shots, ui = pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group(), pygame.sprite.Group(),
     Asteroid.containers = (updateable, drawable, asteroids)
     AsteroidField.containers = (updateable)
     Player.containers = (updateable, drawable)
@@ -32,8 +33,9 @@ def main():
                 if asteroid.collisions(shot) == True:
                     shot.kill()
                     asteroid.split()
+                    score += 1
             if asteroid.collisions(player) == True:
-                print ("Game over!")
+                print (f"Game over!\nYour score was {score}")
                 exit()
         for item in drawable:
             item.draw(screen)
