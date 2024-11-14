@@ -48,8 +48,8 @@ def main():
                 player.position = (middle_width, middle_height)
         for item in drawable:
             item.draw(screen)
-        score.draw(screen, 0, 0)
-        lives.draw(screen, 1250, 0)
+        score.draw(screen, 0+2, 0)
+        lives.draw(screen, SCREEN_WIDTH-19, 0)
         pygame.display.flip()
         dt = (clock.tick(60) / 1000)
 
