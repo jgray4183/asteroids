@@ -41,9 +41,14 @@ def main():
             if asteroid.collisions(player) == True:
                 if lives.val < 1:
                     print (f"Game over!\nYour score was {score.val}")
-                    submit = open("highscores.txt", "a")
-                    submit.write(f"\n{score.val}")
-                    submit.close()
+                    try:
+                        submit = open("highscores.txt", "x")
+                        submit.write(f"High Score records\n{score.val}")
+                    except Exception as e:
+                        raise e ("highscores.txt already exists")
+                        submit = open("highscores.txt", "a")
+                        submit.write(f"\n{score.val}")
+                        submit.close()
                     exit()
                 lives.life_lost()
                 for asteroid in asteroids:
