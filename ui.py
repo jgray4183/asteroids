@@ -1,5 +1,6 @@
 import pygame
 pygame.font.init()
+from constants import FRAMES_PER_SCORE
 
 class Ui():
     def __init__(self, font_size):
@@ -14,10 +15,19 @@ class Ui():
 class Score(Ui):
     def __init__(self):
         super().__init__(30)
+        global FRAMES_PER_SCORE
         self.val = 0
+        self.frames_to_score = FRAMES_PER_SCORE
 
     def score_increase(self):
         self.val += 1
+
+    def score_over_time(self):
+        global FRAMES_PER_SCORE
+        self.frames_to_score -= 1
+        if self.frames_to_score == 0:
+            self.score_increase()
+            self.frames_to_score = FRAMES_PER_SCORE
 
 class Lives(Ui):
     def __init__(self):

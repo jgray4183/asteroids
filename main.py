@@ -25,6 +25,7 @@ def main():
     asteroid_field = AsteroidField()
     score = Score()
     lives = Lives()
+    print (player.triangle())
     while running == True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -56,6 +57,7 @@ def main():
                 player.position = (middle_width, middle_height)
         for item in drawable:
             item.draw(screen)
+        score.score_over_time()
         score.draw(screen, 0+2, 0)
         lives.draw(screen, SCREEN_WIDTH-19, 0)
         pygame.display.flip()

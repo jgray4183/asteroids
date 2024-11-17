@@ -33,7 +33,7 @@ class Player(CircleShape):
 
     def shoot(self):
         if self.timer <= 0:
-            shot = Shot(self.position[0], self.position[1])
+            shot = Shot(self.triangle()[0][0], self.triangle()[0][1])
             shot.velocity = (pygame.Vector2(0, 1).rotate(self.rotation)) * PLAYER_SHOOT_SPEED
             self.timer = PLAYER_SHOOT_COOLDOWN
 
